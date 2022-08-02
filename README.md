@@ -1,0 +1,148 @@
+# FastGeoTable
+
+FastGeoTable is a geospatial api to edit tables with geospatial data. FastGeoTable is written in [Python](https://www.python.org/) using the [FastAPI](https://fastapi.tiangolo.com/) web framework. 
+
+---
+
+**Source Code**: <a href="https://github.com/mkeller3/FastGeoTable" target="_blank">https://github.com/mkeller3/FastGeoTable</a>
+
+---
+
+## Requirements
+
+FastGeoTable requires PostGIS >= 2.4.0.
+
+## Configuration
+
+In order for the api to work you will need to edit the `config.py` file with your database connections.
+
+Example
+```python
+DATABASES = {
+    "data": {
+        "host": "localhost", # Hostname of the server
+        "database": "data", # Name of the database
+        "username": "postgres", # Name of the user, ideally only SELECT rights
+        "password": "postgres", # Password of the user
+        "port": 5432, # Port number for PostgreSQL
+    }
+}
+```
+
+## Usage
+
+### Running Locally
+
+To run the app locally `uvicorn main:app --reload`
+
+### Production
+Build Dockerfile into a docker image to deploy to the cloud.
+
+## API
+
+| Method | URL                                                                              | Description                                             |
+| ------ | -------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| `PUT`  | `/api/v1/tables/edit_row_attributes`                                             | [Edit Row Attributes](#edit-row-attributes)               |
+| `PUT`  | `/api/v1/tables/edit_row_geometry`                                               | [Edit Row Geometry](#edit-row-geometry)               |
+| `POST`  | `/api/v1/tables/add_column`                                                     | [Add Column](#add-column)               |
+| `DELETE`  | `/api/v1/tables/delete_column`                                                | [Delete Column](#delete-column)               |
+| `POST`  | `/api/v1/tables/add_row`                                                        | [Add Row](#add-row)               |
+| `DELETE`  | `/api/v1/tables/delete_row`                                                   | [Delete Row](#delete-row)               |
+| `GET`  | `/api/v1/health_check`                                                           | Server health check: returns `200 OK`   |
+
+## Endpoint Description's
+
+## Edit Row Attributes
+
+### Description
+
+
+Example: 
+### Example Input 
+```json
+
+```
+
+### Example Output
+```json
+
+```
+
+## Edit Row Geometry
+
+### Description
+
+
+Example: 
+### Example Input 
+```json
+
+```
+
+### Example Output
+```json
+
+```
+
+## Add Column
+
+### Description
+
+
+Example: 
+### Example Input 
+```json
+
+```
+
+### Example Output
+```json
+
+```
+
+## Delete Column
+
+### Description
+
+
+Example: 
+### Example Input 
+```json
+
+```
+
+### Example Output
+```json
+
+```
+
+## Add Row
+
+### Description
+
+
+Example: 
+### Example Input 
+```json
+
+```
+
+### Example Output
+```json
+
+```
+## Delete Row
+
+### Description
+
+
+Example: 
+### Example Input 
+```json
+
+```
+
+### Example Output
+```json
+
+```
