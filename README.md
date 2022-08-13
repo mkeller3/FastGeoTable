@@ -48,6 +48,8 @@ Build Dockerfile into a docker image to deploy to the cloud.
 | `DELETE`  | `/api/v1/tables/delete_column`                                                | [Delete Column](#delete-column)               |
 | `POST`  | `/api/v1/tables/add_row`                                                        | [Add Row](#add-row)               |
 | `DELETE`  | `/api/v1/tables/delete_row`                                                   | [Delete Row](#delete-row)               |
+| `DELETE`  | `/api/v1/tables/delete_table`                                                 | [Delete Table](#delete-table)               |
+| `POST`  | `/api/v1/tables/create_table`                                                   | [Create Table](#create-table)               |
 | `GET`  | `/api/v1/health_check`                                                           | Server health check: returns `200 OK`   |
 
 ## Endpoint Description's
@@ -55,17 +57,29 @@ Build Dockerfile into a docker image to deploy to the cloud.
 ## Edit Row Attributes
 
 ### Description
+Edit Row Attributes endpoint allows you to edit one/all atrributes for a row at a time.
+In the example below we are changing the `objectid` and `last_name` columns for the row with a gid of `1`.
 
 
 Example: 
 ### Example Input 
 ```json
-
+{
+    "database": "data",
+    "table": "mclean_county_parcels",
+    "gid": 1,
+    "values": {
+        "objectid": "1",
+        "last_name": "sample"
+    }
+}
 ```
 
 ### Example Output
 ```json
-
+{
+    "status": true
+}
 ```
 
 ## Edit Row Geometry
