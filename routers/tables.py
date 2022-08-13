@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Request, HTTPException
+import json
 
 router = APIRouter()
 
@@ -50,7 +51,34 @@ async def edit_row_attributes(
         query = query[:-1]
 
         query += f" WHERE gid = {info.gid};"
-        
+
         await con.fetch(query)
 
+        return {"status": True}
+
+@router.post("/edit_row_geometry/", tags=["Tables"])
+async def edit_row_geometry(
+        request: Request,
+        info: models.EditRowGeometry
+    ):
+
+    pool = request.app.state.databases[f'{info.database}_pool']
+
+    async with pool.acquire() as con:
+
+        geojson = {
+            "type": info.geojson.type,
+            "coordinates": json.loads(json.dumps(info.geojson.coordinates))
+        }
+
+        query = f"""
+            UPDATE {info.table}
+            SET geom = ST_GeomFromGeoJSON('{json.dumps(geojson)}')
+            WHERE gid = {info.gid};
+        """
+
+        print(query)
+
+        await con.fetch(query)
+        
         return {"status": True}

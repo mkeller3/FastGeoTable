@@ -85,17 +85,31 @@ Example:
 ## Edit Row Geometry
 
 ### Description
-
+Edit Row Geometry endpoint allows you to change the geometry for each feature in a table by passing in geojson geometry in SRID 4326.
+In the example below, we are updating a zip centroid for a new lat lng of `-88.23456,40.12345]`.
 
 Example: 
 ### Example Input 
 ```json
-
+{
+    "database": "data",
+    "table": "zip_centroids",
+    "gid": 1,
+    "geojson": {
+        "type": "Point",
+        "coordinates": [
+            -88.23456,
+            40.12345
+        ]
+    }
+}
 ```
 
 ### Example Output
 ```json
-
+{
+    "status": true
+}
 ```
 
 ## Add Column
