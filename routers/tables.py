@@ -34,7 +34,7 @@ async def edit_row_attributes(
         string_columns = ",".join(db_columns)
 
         query = f"""
-            UPDATE {info.table}
+            UPDATE "{info.table}"
             SET 
         """
 
@@ -72,12 +72,87 @@ async def edit_row_geometry(
         }
 
         query = f"""
-            UPDATE {info.table}
+            UPDATE "{info.table}"
             SET geom = ST_GeomFromGeoJSON('{json.dumps(geojson)}')
             WHERE gid = {info.gid};
         """
 
-        print(query)
+        await con.fetch(query)
+        
+        return {"status": True}
+
+@router.post("/add_column/", tags=["Tables"])
+async def add_column(
+        request: Request,
+        info: models.AddColumn
+    ):
+
+    pool = request.app.state.databases[f'{info.database}_pool']
+
+    async with pool.acquire() as con:
+
+        query = f"""
+            ALTER TABLE "{info.table}"
+            ADD COLUMN "{info.column_name}" {info.column_type};
+        """
+
+        await con.fetch(query)
+        
+        return {"status": True}
+
+@router.delete("/delete_column/", tags=["Tables"])
+async def delete_column(
+        request: Request,
+        info: models.DeleteColumn
+    ):
+
+    pool = request.app.state.databases[f'{info.database}_pool']
+
+    async with pool.acquire() as con:
+        
+        query = f"""
+            ALTER TABLE "{info.table}"
+            DROP COLUMN IF EXISTS "{info.column_name}";
+        """
+
+        await con.fetch(query)
+        
+        return {"status": True}
+
+
+@router.delete("/delete_row/", tags=["Tables"])
+async def delete_row(
+        request: Request,
+        info: models.DeleteRow
+    ):
+
+    pool = request.app.state.databases[f'{info.database}_pool']
+
+    async with pool.acquire() as con:
+        
+        query = f"""
+            DELETE FROM "{info.table}"
+            WHERE gid = {info.gid};
+        """
+
+        await con.fetch(query)
+        
+        return {"status": True}
+
+
+@router.delete("/delete_table/", tags=["Tables"])
+async def delete_table(
+        request: Request,
+        info: models.DeleteTable
+    ):
+
+    pool = request.app.state.databases[f'{info.database}_pool']
+
+    async with pool.acquire() as con:
+        
+        query = f"""
+            DROP TABLE IF EXISTS "{info.table}";
+        """
 
         await con.fetch(query)
         

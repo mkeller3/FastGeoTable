@@ -120,11 +120,19 @@ Example:
 Example: 
 ### Example Input 
 ```json
-
+{
+    "database": "data",
+    "table": "zip_centroids",
+    "column_name": "test",
+    "column_type": "text"
+}
 ```
 
 ### Example Output
 ```json
+{
+    "status": true
+}
 
 ```
 
@@ -136,12 +144,18 @@ Example:
 Example: 
 ### Example Input 
 ```json
-
+{
+    "database": "data",
+    "table": "zip_centroids",
+    "column_name": "test"
+}
 ```
 
 ### Example Output
 ```json
-
+{
+    "status": true
+}
 ```
 
 ## Add Row
@@ -167,10 +181,55 @@ Example:
 Example: 
 ### Example Input 
 ```json
+{
+    "database": "data",
+    "table": "zip_centroids",
+    "gid": 1
+}
+```
+
+### Example Output
+```json
+{
+    "status": true
+}
+```
+
+## Create Table
+
+### Description
+
+
+Example: 
+### Example Input 
+```json
 
 ```
 
 ### Example Output
 ```json
+{
+    "status": true
+}
+```
 
+## Delete Table
+
+### Description
+
+
+Example: 
+### Example Input 
+```json
+{
+    "database": "data",
+    "table": "zip_centroids"
+}
+```
+
+### Example Output
+```json
+{
+    "status": true
+}
 ```

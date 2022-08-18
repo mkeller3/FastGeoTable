@@ -41,3 +41,27 @@ class EditRowGeometry(BaseModel):
     database: str
     gid: int
     geojson: Geojson
+
+class AddColumn(BaseModel):
+    
+    table: str
+    database: str
+    column_name: str
+    column_type: Literal['text','integer','bigint','double precision','booelan','time','uuid']
+
+class DeleteColumn(BaseModel):
+    
+    table: str
+    database: str
+    column_name: str
+
+class DeleteRow(BaseModel):
+    
+    table: str
+    database: str
+    gid: int
+
+class DeleteTable(BaseModel):
+    
+    table: str
+    database: str
