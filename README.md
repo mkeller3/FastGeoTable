@@ -115,9 +115,10 @@ Example:
 ## Add Column
 
 ### Description
+The add column endpoints allows you to add a new column to an existing table in the database.
 
+Example: In the example below, we are adding a column called `test` that is text for the table `zip_centoids`.
 
-Example: 
 ### Example Input 
 ```json
 {
@@ -139,9 +140,10 @@ Example:
 ## Delete Column
 
 ### Description
+The delete column endpoint allows you to delete a column in an existing table in the database.
 
+Example: In the example below, we are deleting a column called `test` from the table `zip_centoids`.
 
-Example: 
 ### Example Input 
 ```json
 {
@@ -161,18 +163,20 @@ Example:
 ## Add Row
 
 ### Description
+The add row endpoint allows you to add a new to an existing table within the database. 
+You can pass in one or all columns for this endpoint. If you do not pass in a column the value will be null.
 
+Example: In the example below, we are adding a a new row to the `zip_centroids` table and only adding the postalcode column with the geometry.
 
-Example: 
 ### Example Input 
 ```json
 {
     "database": "data",
-    "table": "zip_centroids2",
+    "table": "zip_centroids",
     "columns": [
         {
-            "column_name": "test",
-            "value": "text"
+            "column_name": "postalcode",
+            "value": "55555"
         }
     ],
     "geojson": {
@@ -189,15 +193,16 @@ Example:
 ```json
 {
     "status": true,
-    "gid": 1
+    "gid": 7821
 }
 ```
 ## Delete Row
 
 ### Description
+The delete row endpoint allows you to delete a row for a table that exists in the database.
 
+Example: In the example below, we are deleting the column with a gid of `1` in the table `zip_centroids`.
 
-Example: 
 ### Example Input 
 ```json
 {
@@ -217,17 +222,19 @@ Example:
 ## Create Table
 
 ### Description
+The create table endpoints allow you to create a new table inside of a database.
 
+Example: In the example below, we are creating a new table called `zip_centroids_new`. We are adding one column in the table called `postalcode`,
+and setting the table to have `POINT` geometry.
 
-Example: 
 ### Example Input 
 ```json
 {
     "database": "data",
-    "table": "zip_centroids2",
+    "table": "zip_centroids_new",
     "columns": [
         {
-            "column_name": "test",
+            "column_name": "postalcode",
             "column_type": "text"
         }
     ],
@@ -245,9 +252,10 @@ Example:
 ## Delete Table
 
 ### Description
+The delete table endpoint allows you to delete a table within the database.
 
+Example: In the example below, we are deleting a table called `zip_centroids`.
 
-Example: 
 ### Example Input 
 ```json
 {
