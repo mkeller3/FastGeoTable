@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from typing import NamedTuple, Union, Literal
+from typing import NamedTuple, Union, Literal, List, Any
 from typing_extensions import Annotated
 
 class EditRowAttributes(BaseModel):
@@ -55,11 +55,36 @@ class DeleteColumn(BaseModel):
     database: str
     column_name: str
 
+class RowColumn(BaseModel):
+    
+    column_name: str
+    value: str
+
+class AddRow(BaseModel):
+    
+    table: str
+    database: str
+    columns: List[RowColumn]
+    geojson: Geojson
+
 class DeleteRow(BaseModel):
     
     table: str
     database: str
     gid: int
+
+class Column(BaseModel):
+    
+    column_name: str
+    column_type: Literal['text','integer','bigint','double precision','booelan','time','uuid']
+
+class CreateTable(BaseModel):
+    
+    table: str
+    database: str
+    columns: List[Column]
+    geometry_type: Literal['POINT','LINESTRING','POLYGON']
+    srid: int=4326
 
 class DeleteTable(BaseModel):
     

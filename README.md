@@ -166,12 +166,31 @@ Example:
 Example: 
 ### Example Input 
 ```json
-
+{
+    "database": "data",
+    "table": "zip_centroids2",
+    "columns": [
+        {
+            "column_name": "test",
+            "value": "text"
+        }
+    ],
+    "geojson": {
+        "type": "Point",
+        "coordinates": [
+            -88.23456,
+            40.12345
+        ]
+    }
+}
 ```
 
 ### Example Output
 ```json
-
+{
+    "status": true,
+    "gid": 1
+}
 ```
 ## Delete Row
 
@@ -203,7 +222,17 @@ Example:
 Example: 
 ### Example Input 
 ```json
-
+{
+    "database": "data",
+    "table": "zip_centroids2",
+    "columns": [
+        {
+            "column_name": "test",
+            "column_type": "text"
+        }
+    ],
+    "geometry_type": "POINT"
+}
 ```
 
 ### Example Output
