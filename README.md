@@ -86,7 +86,7 @@ Example:
 
 ### Description
 Edit Row Geometry endpoint allows you to change the geometry for each feature in a table by passing in geojson geometry in SRID 4326.
-In the example below, we are updating the zip centroid with the gid of `1` for a new lat lng of `[-88.23456,40.12345]`.
+In the example below, we are updating the table called `zip_centroid` with the gid of `1` for a new lat lng of `[-88.23456,40.12345]`.
 
 Example: 
 ### Example Input 
@@ -117,7 +117,7 @@ Example:
 ### Description
 The add column endpoints allows you to add a new column to an existing table in the database.
 
-Example: In the example below, we are adding a column called `test` that is text for the table `zip_centoids`.
+Example: In the example below, we are adding a column called `test` that is text for the table `zip_centroids`.
 
 ### Example Input 
 ```json
@@ -142,7 +142,7 @@ Example: In the example below, we are adding a column called `test` that is text
 ### Description
 The delete column endpoint allows you to delete a column in an existing table in the database.
 
-Example: In the example below, we are deleting a column called `test` from the table `zip_centoids`.
+Example: In the example below, we are deleting a column called `test` from the table `zip_centroids`.
 
 ### Example Input 
 ```json
