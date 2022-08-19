@@ -1,0 +1,289 @@
+{
+	"info": {
+		"_postman_id": "500ae5ce-9bd8-42b4-9d18-ae3d23e50a09",
+		"name": "FastGeotable",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Edit Row Attributes",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"database\": \"data\",\n    \"table\": \"mclean_county_parcels\",\n    \"gid\": 1,\n    \"values\": {\n        \"objectid\": \"1\",\n        \"last_name\": \"sample\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/tables/edit_row_attributes/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"tables",
+						"edit_row_attributes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Row Geometry",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"database\": \"data\",\n    \"table\": \"zip_centroids\",\n    \"gid\": 1,\n    \"geojson\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n            -88.23456,\n            40.12345\n        ]\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/tables/edit_row_geometry/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"tables",
+						"edit_row_geometry",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Column",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"database\": \"data\",\n    \"table\": \"zip_centroids\",\n    \"column_name\": \"test\",\n    \"column_type\": \"text\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/tables/add_column/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"tables",
+						"add_column",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Column",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"database\": \"data\",\n    \"table\": \"zip_centroids\",\n    \"column_name\": \"test\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/tables/delete_column/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"tables",
+						"delete_column",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Row",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"database\": \"data\",\n    \"table\": \"zip_centroids\",\n    \"gid\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/tables/delete_row/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"tables",
+						"delete_row",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Table",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"database\": \"data\",\n    \"table\": \"zip_centroids2\",\n    \"columns\": [\n        {\n            \"column_name\": \"test\",\n            \"column_type\": \"text\"\n        }\n    ],\n    \"geometry_type\": \"POINT\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/tables/create_table/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"tables",
+						"create_table",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Row",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"database\": \"data\",\n    \"table\": \"zip_centroids2\",\n    \"columns\": [\n        {\n            \"column_name\": \"test\",\n            \"value\": \"text\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/tables/add_row/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"tables",
+						"add_row",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Table",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"database\": \"data\",\n    \"table\": \"zip_centroids3\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/tables/delete_table/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"tables",
+						"delete_table",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
